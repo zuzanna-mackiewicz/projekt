@@ -8,7 +8,6 @@ def nucleic_acid_reader():
 
     nucleic_acid_path_string = filedialog.askopenfilename(initialdir = 'path',title = "SELECT NUCLEIC ACID STRUCTURE:",filetypes = (("PDB files","*.pdb"),("all files","*.*")))
     nucleic_acid_name = os.path.basename(nucleic_acid_path_string)
-    # print(nucleic_acid_name)
 
     with open(nucleic_acid_path_string, 'r') as nucleic_acid:
 
@@ -16,11 +15,14 @@ def nucleic_acid_reader():
         nucleic_acid_structure = parser.get_structure(nucleic_acid_name, nucleic_acid)
         model_structure = nucleic_acid_structure[0]
 
-    # print(path)
-    # print(nucleic_acid_path_string)
-    # print(nucleic_acid_structure)
-    # print(model_structure)
+    list_of_nucleotides = ['A', 'C', 'G', 'T', 'U']
 
-    return model_structure
+    for chain in model_structure:
+        for residue in chain:
+            residue_name = residue.get_resname().strip()
+            if residue_name in list_of_nucleotides:
+                print(residue_name, str(residue.get_id()[1]))
+
+    return residue_name, str(residue.get_id()[1])
 
 nucleic_acid_reader()
