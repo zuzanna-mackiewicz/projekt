@@ -17,12 +17,23 @@ def nucleic_acid_reader():
 
     list_of_nucleotides = ['A', 'C', 'G', 'T', 'U']
 
+    nucleic_acid_data = []
     for chain in model_structure:
         for residue in chain:
             residue_name = residue.get_resname().strip()
             if residue_name in list_of_nucleotides:
-                print(residue_name, str(residue.get_id()[1]))
+                for atom in residue:
+                    atom_data = []
+                    atom_data.append(residue_name)
+                    atom_data.append(str(residue.get_id()[1]))
+                    atom_data.append(atom.get_vector()[0])
+                    atom_data.append(atom.get_vector()[1])
+                    atom_data.append(atom.get_vector()[2])
 
-    return residue_name, str(residue.get_id()[1])
+                    nucleic_acid_data.append(atom_data)
+
+    print(nucleic_acid_data)
+    return nucleic_acid_data
+
 
 nucleic_acid_reader()

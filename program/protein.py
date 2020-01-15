@@ -18,12 +18,23 @@ def protein_reader():
     list_of_aminoacids = ['ALA', 'ASX', 'CYS', 'ASP', 'GLU', 'PHE', 'GLY', 'HIS', 'ILE', 'LYS', 'LEU', 'MET', 'ASN', 'PRO', 'GLN',
               'ARG', 'SER', 'THR', 'SEC', 'VAL', 'TRP', 'XAA', 'TYR', 'GLX', 'PYL', 'UNK', 'XLE', 'MSE', 'ME0']
 
+    protein_data = []
     for chain in model_structure:
         for aminoacid in chain:
             aminoacid_name = aminoacid.get_resname().strip()
             if aminoacid_name in list_of_aminoacids:
-                print(aminoacid_name, str(aminoacid.get_id()[1]))
+                for atom in aminoacid:
+                    atom_data = []
+                    atom_data.append(aminoacid_name)
+                    atom_data.append(str(aminoacid.get_id()[1]))
+                    atom_data.append(atom.get_vector()[0])
+                    atom_data.append(atom.get_vector()[1])
+                    atom_data.append(atom.get_vector()[2])
 
-    return aminoacid_name, str(aminoacid.get_id()[1])
+
+                    protein_data.append(atom_data)
+
+    # print(protein_data)
+    return protein_data
 
 protein_reader()
