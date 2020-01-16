@@ -34,7 +34,7 @@ def protein_reader():
 
                     protein_data.append(atom_data)
 
-    # print(protein_data)
+    print(protein_data)
     return protein_data
 
 protein_reader()

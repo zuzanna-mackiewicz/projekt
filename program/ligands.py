@@ -3,7 +3,7 @@ import os
 from biopandas.mol2 import PandasMol2
 from biopandas.mol2 import split_multimol2
 from pandas import DataFrame
-#
+
 
 def ligands_reader():
 
