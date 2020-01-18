@@ -1,13 +1,16 @@
 from Bio.PDB.PDBParser import PDBParser
 from tkinter import filedialog
+from tkinter import *
 import os
 
 def nucleic_acid_reader():
 
+    window = Tk()
     path = os.getcwd()
 
     nucleic_acid_path_string = filedialog.askopenfilename(initialdir = 'path',title = "SELECT NUCLEIC ACID STRUCTURE:",filetypes = (("PDB files","*.pdb"),("all files","*.*")))
     nucleic_acid_name = os.path.basename(nucleic_acid_path_string)
+    window.destroy()
 
     with open(nucleic_acid_path_string, 'r') as nucleic_acid:
 
@@ -32,8 +35,8 @@ def nucleic_acid_reader():
 
                     nucleic_acid_data.append(atom_data)
 
-    print(nucleic_acid_data)
+    # print(nucleic_acid_data)
     return nucleic_acid_data
 
-
-nucleic_acid_reader()
+if __name__ == '__main__':
+    nucleic_acid_reader()

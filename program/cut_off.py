@@ -1,59 +1,45 @@
-import numpy as np
-from tkinter import *
-import tkinter.messagebox
 import tkinter as tk
-
-window = Tk()
-window.geometry('300x300')
-window.title('SET UP CUT_OFF VALUE:')
-
-label_1 = Label(window, text = 'Look for:').place(x = 5, y = 5)
-
-entry1 = tk.IntVar()
-option1 = tk.BooleanVar()
-option2 = tk.BooleanVar()
-option3 = tk.BooleanVar()
-
-def cut_off():
-    print(entry1.get())
-    print(option1.get())
-    print(option2.get())
-    print(option3.get())
-
-def close():
-    exit()
-
-option_1 = Checkbutton(window, text = 'strong interactions (distance <= 3)', variable = option1).place(x = 10, y = 30)
-option_2 = Checkbutton(window, text = 'medium interactions (3 < distance <= 7)', variable = option2).place(x = 10, y = 60)
-option_3 = Checkbutton(window, text = 'weak interactions (7 < distance <= 10)', variable = option3).place(x = 10, y = 90)
-
-label_2 = Label(window, text = 'Set up your own cut-off value:').place(x = 5, y = 130)
-
-entry_1 = Entry(window, width = 3, textvariable =entry1).place(x= 10, y = 160)
-label_3 = Label(window, text = 'Å').place(x = 30, y = 160)
-
-button_1 = Button(window, width = 7, text = 'Apply', command = cut_off).place(x = 5, y = 200)
-button_2 = Button(window, width = 7, text = 'Close', command = close).place(x = 5, y = 230)
-
-window.mainloop()
+from tkinter import *
 
 
-    # window = Tk()
-    # window.geometry('300x300')
-    # window.title('SET UP CUT_OFF VALUE:')
-    #
-    # label_1 = Label(window, text = 'Look for:').place(x = 5, y = 5)
-    #
-    # option_1 = Checkbutton(window, text = 'strong interactions (distance <= 3)').place(x = 10, y = 30)
-    # option_2 = Checkbutton(window, text = 'medium interactions (3 < distance <= 7)').place(x = 10, y = 60)
-    # option_3 = Checkbutton(window, text = 'weak interactions (7 < distance <= 10)').place(x = 10, y = 90)
-    #
-    # label_2 = Label (window, text = 'Set up your own cut-off value:').place(x = 5, y = 130)
-    #
-    # entry_1 = Entry(window).place(x= 10, y = 160)
-    #
-    # button_1 = Button(window, text = 'Apply', command = chosen_value).place(x = 5, y = 200)
-    #
-    # window.mainloop()
+def distance(entry1_val, option1_val , option2_val, option3_val):
 
-cut_off()
+    min_distance = 0
+    max_distance = 0
+    min_distance2 = 0
+    max_distance2 = 0
+
+
+    if entry1_val == 0:
+        if option1_val is True and option2_val is False and option3_val is False:
+            min_distance = 0
+            max_distance = 3
+        elif option2_val is True and option1_val is False and option3_val is False:
+            min_distance = 3
+            max_distance = 7
+        elif option3_val is True and option1_val is False and option2_val is False:
+            min_distance = 7
+            max_distance = 10
+        elif option1_val is True and option2_val is True and option3_val is True:
+            min_distance = 0
+            max_distance = 10
+        elif option1_val is True and option2_val is True and option3_val is False:
+            min_distance = 0
+            max_distance = 7
+        elif option1_val is False and option2_val is True and option3_val is True:
+            min_distance = 3
+            max_distance = 10
+        elif option1_val is True and option2_val is False and option3_val is True:
+            min_distance = 0
+            max_distance = 10
+            min_distance2 = 3
+            max_distance2 = 7
+    else:
+        min_distance = 0
+        max_distance = entry1_val
+
+    # print([min_distance, max_distance, min_distance2, max_distance2])
+    return [min_distance, max_distance, min_distance2, max_distance2]
+
+if __name__ == '__main__':
+    distance()

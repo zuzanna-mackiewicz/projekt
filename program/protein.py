@@ -1,13 +1,17 @@
 from Bio.PDB.PDBParser import PDBParser
 from tkinter import filedialog
+from tkinter import *
 import os
 
 def protein_reader():
 
+    window =Tk()
     path = os.getcwd()
 
     protein_path_string = filedialog.askopenfilename(initialdir = 'path',title = "SELECT PROTEIN STRUCTURE:",filetypes = (("PDB files","*.pdb"),("all files","*.*")))
     protein_name = os.path.basename(protein_path_string)
+    window.destroy()
+
 
     with open(protein_path_string, 'r') as protein:
 
@@ -34,7 +38,8 @@ def protein_reader():
 
                     protein_data.append(atom_data)
 
-    print(protein_data)
+    # print(protein_data)
     return protein_data
 
-protein_reader()
+if __name__ == '__main__':
+    protein_reader()

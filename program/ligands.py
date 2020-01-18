@@ -1,4 +1,5 @@
 from tkinter import filedialog
+from tkinter import *
 import os
 from biopandas.mol2 import PandasMol2
 from biopandas.mol2 import split_multimol2
@@ -7,10 +8,13 @@ from pandas import DataFrame
 
 def ligands_reader():
 
+    window = Tk()
     path = os.getcwd()
 
     ligands_path_string = filedialog.askopenfilename(initialdir = 'path',title = "SELECT LIGANDS STRUCTURE:",filetypes = (("MOL2 files","*.mol2"),("all files","*.*")))
     ligands_name = os.path.basename(ligands_path_string)
+    window.destroy()
+
 
     ligands_data = []
     model_number = 1
@@ -26,7 +30,8 @@ def ligands_reader():
             model_data = df.values.tolist()
             ligands_data = ligands_data + model_data
 
-    print(ligands_data)
+    # print(ligands_data)
     return ligands_data
 
-ligands_reader()
+if __name__ == '__main__':
+    ligands_reader()
