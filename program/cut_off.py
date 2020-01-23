@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import *
 
-
 def distance(entry1_val, option1_val , option2_val, option3_val):
 
     min_distance = 0

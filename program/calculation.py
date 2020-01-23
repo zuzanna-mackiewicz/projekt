@@ -34,8 +34,7 @@ def calculations(target_data, ligands_data, cut_off):
         elif cut_off[1] == 10 and cut_off[0] == 7:
             print(f'For selected cut-off value (Å): interaction between {listed_data[i][0]} {listed_data[i][1]} and ligand {listed_data[i][2]}')
         else:
-            print(
-                f'For selected cut-off value ({cut_off[1]} Å): interaction between {listed_data[i][0]} {listed_data[i][1]} and ligand {listed_data[i][2]}')
+            print(f'For selected cut-off value ({cut_off[1]} Å): interaction between {listed_data[i][0]} {listed_data[i][1]} and ligand {listed_data[i][2]}')
 
     return filtered_data
 
