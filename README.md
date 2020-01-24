@@ -1,4 +1,5 @@
-#Szukanie interakcji target-ligand
+Szukanie interakcji target-ligand
+---
 
 Obecnie proces szukania nowych terapeutyków często rozpoczyna się od analizy
 bioinformatycznej. Metody komputerowe pozwalają w łatwy i szybki sposób
@@ -11,7 +12,9 @@ tak, aby było to jak najbardzie korzystne energetycznie. Następnie każda spra
 który określa jak dobrze pasuje ona do targetu. Zakłada się, że cząsteczki z najlepszym
 scorem mają największą szansę wykazać akywności biologiczną i tylko je uwzględnia się w dalszych
 badaniach.
+
 ---
+
 Powyższy program służy do odnajdywania interakcji obecnych między białkiem lub kwasem nukleinowym
 (DNA/RNA) a ligandami zadokowanymi w jego strukturze. Program dla uproszczenia trakuje takie interakcje jako
 występowanie atomów targetu w określonej odległości od atomów liganda. W zależności od wyboru użytkownika,
