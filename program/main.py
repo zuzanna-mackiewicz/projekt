@@ -1,10 +1,7 @@
 from tkinter import *
 import tkinter as tk
-import numpy as np
 import pandas as pd
-import os
 import pathlib
-import csv
 
 from nucleicacid import nucleic_acid_reader
 from protein import protein_reader
@@ -81,6 +78,15 @@ button_3 = Button(window2, width=7, text='Close', command=close).place(x=5, y=23
 window2.mainloop()
 
 def calc_data():
+    '''
+    Uses calculations module to find interactions between target ang ligands chosen by user. Creates two csv files:
+    - first with list of nucleotide-ligand (or amino acid-ligand) pairs and
+    - second with ligands sorted by number of contacts with the target.
+    Allows to roughly predict ligands activity.
+
+    :return: table with nucleotide-ligand (or amino acid-ligand) pairs + table with ligands sorted by number of contacts with the target
+    :rtype: csv
+    '''
 
     result = calculations(target_data, ligands_data, cut_off)
     result['nucleotide/aminoacid'] = result['symbol_x'] + result['number_x']
@@ -88,7 +94,12 @@ def calc_data():
 
     sorted_result = result['ligand'].value_counts().reset_index()
     sorted_result = sorted_result.rename(columns={'index': 'ligand', 'ligand': 'count'})
-    print(sorted_result)
+
+    print('---------------------')
+    print('Best activity:')
+    for i in range(0, sorted_result.shape[0]):
+        if sorted_result.iloc[i, 1] == sorted_result.iloc[0, 1]:
+            print(f' ligand {sorted_result.iloc[i,0]}')
 
     path = (pathlib.Path.cwd()/ "..").resolve()
     path = path / 'results'

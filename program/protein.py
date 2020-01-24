@@ -4,6 +4,13 @@ from tkinter import *
 import os
 
 def protein_reader():
+    '''
+    Parses selected PBD file with protein structure using BioPython module.
+    Lists all amino acids in structure with their coordinates.
+
+    :return: symbols, numbers and coordinates of amino acids
+    :rtype: list of lists
+    '''
 
     window =Tk()
     path = os.getcwd()

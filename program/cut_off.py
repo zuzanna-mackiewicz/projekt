@@ -2,6 +2,21 @@ import tkinter as tk
 from tkinter import *
 
 def distance(entry1_val, option1_val , option2_val, option3_val):
+    '''
+    Changes user choice of cut-off value into the list used for further calculations.
+    Allows user to choose any combination of provided distances values or to select this value manually.
+
+    :param entry1_val: manually selected cut-off value
+    :type entry1_val: int
+    :param option1_val: selected search for strong interactions
+    :type option1_val: boolean
+    :param option2_val: selected search for medium interactions
+    :type option2_val: boolean
+    :param option3_val: selected search for weak interactions
+    :type option3_val: boolean
+    :return: minimal and minimal distance +
+    :rtype: list
+    '''
 
     min_distance = 0
     max_distance = 0

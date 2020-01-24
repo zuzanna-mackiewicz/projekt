@@ -7,6 +7,13 @@ from pandas import DataFrame
 
 
 def ligands_reader():
+    '''
+    Parses selected MOL2 file with structures of previously docked ligands using BioPandas module.
+    Lists all atoms from all ligands with their coordinates.
+
+    :return: symbols, numbers and coordinates of atoms + number of atom
+    :rtype: list of lists
+    '''
 
     window = Tk()
     path = os.getcwd()

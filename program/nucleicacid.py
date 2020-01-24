@@ -4,6 +4,13 @@ from tkinter import *
 import os
 
 def nucleic_acid_reader():
+    '''
+    Parses selected PBD file with DNA/RNA structure using BioPython module.
+    Lists all nucleotides in structure with their coordinates.
+
+    :return: symbols, numbers and coordinates of nucleotides
+    :rtype: list of lists
+    '''
 
     window = Tk()
     path = os.getcwd()
