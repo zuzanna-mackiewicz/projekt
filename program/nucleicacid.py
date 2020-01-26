@@ -13,7 +13,8 @@ def nucleic_acid_reader():
     '''
 
     window = Tk()
-    path = os.getcwd()
+    path = os.path.normpath(os.getcwd() + os.sep + os.pardir)
+    path = os.path.join(path, 'files')
 
     nucleic_acid_path_string = filedialog.askopenfilename(initialdir = 'path',title = "SELECT NUCLEIC ACID STRUCTURE:",filetypes = (("PDB files","*.pdb"),("all files","*.*")))
     nucleic_acid_name = os.path.basename(nucleic_acid_path_string)
@@ -43,7 +44,7 @@ def nucleic_acid_reader():
                     nucleic_acid_data.append(atom_data)
 
     # print(nucleic_acid_data)
-    return nucleic_acid_data
+    return nucleic_acid_data, nucleic_acid_name[6:-4]
 
 if __name__ == '__main__':
     nucleic_acid_reader()

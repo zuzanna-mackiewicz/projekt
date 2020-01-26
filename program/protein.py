@@ -12,8 +12,9 @@ def protein_reader():
     :rtype: list of lists
     '''
 
-    window =Tk()
-    path = os.getcwd()
+    window = Tk()
+    path = os.path.normpath(os.getcwd() + os.sep + os.pardir)
+    path = os.path.join(path, 'files')
 
     protein_path_string = filedialog.askopenfilename(initialdir = 'path',title = "SELECT PROTEIN STRUCTURE:",filetypes = (("PDB files","*.pdb"),("all files","*.*")))
     protein_name = os.path.basename(protein_path_string)
@@ -46,7 +47,7 @@ def protein_reader():
                     protein_data.append(atom_data)
 
     # print(protein_data)
-    return protein_data
+    return protein_data, protein_name[9:-4]
 
 if __name__ == '__main__':
     protein_reader()

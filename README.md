@@ -40,7 +40,7 @@ Podsumowując program pozwala w łatwy sposób wybrać najaktywniejszy ligand z 
 **Dane wejściowe:**
 1. struktura białka/kwasu nukleinowego w formacie PDB
 2. struktura ligandów w formacie MOL2 *
-3. odległość, dla której urzytkownik chce przeprowadzić analizę
+3. odległość, dla której użytkownik chce przeprowadzić analizę
 
 **UWAGA!** * plik ze strukturą ligandów powinien być plikiem otrzymanym w procesie dokowania molekularnego, a
 nie dowolnym plikiem MOL2 (program uruchomi się, jednak analiza nie będzie miała sensu, gdyż dopiero po procesie

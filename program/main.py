@@ -25,15 +25,17 @@ def get_structure():
 
     global target_data
     global ligands_data
+    global target_name
 
     if mode.get() == 'protein':
         window1.destroy()
-        target_data = protein_reader()
+        target_data, target_name = protein_reader()
     elif mode.get() == 'DNA/RNA':
         window1.destroy()
-        target_data = nucleic_acid_reader()
+        target_data, target_name = nucleic_acid_reader()
 
-    ligands_data = ligands_reader()
+    if len(target_data) != 0:
+        ligands_data = ligands_reader()
 
 def close():
     exit()
@@ -44,6 +46,12 @@ mode_2 = Radiobutton(window1, text='RNA/DNA - ligand', width=19, indicatoron=0, 
 button_1 = Button(window1, width=7, text='Close', command=close).place(x=68, y=110)
 
 window1.mainloop()
+
+try:
+    target_data[0]
+except IndexError as error:
+    print('Wrong target type!')
+    raise error
 
 window2 = Tk()
 window2.geometry('300x300')
@@ -105,7 +113,7 @@ def calc_data():
     path = path / 'results'
     path.mkdir(parents=True, exist_ok=True)
 
-    interactions.to_csv(path/'target-ligands interactions', index = False, sep=',', header=True)
-    sorted_result.to_csv(path/'ligands activity', index = False, sep=',', header=True)
+    interactions[['nucleotide/aminoacid', 'ligand']].to_csv(path/f'{target_name} - target-ligands interactions.csv', index = False, sep=';', header=True)
+    sorted_result.to_csv(path/f'{target_name} - ligands activity.csv', index = False, sep=';', header=True)
 
 calc_data()
